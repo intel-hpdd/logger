@@ -48,6 +48,23 @@ describe('logger', () => {
       .toEqual(jasmine.any(Function));
   });
 
+  it('should not write for lower levels', () => {
+    const inst = logger(
+      {
+        path: 'foo/bar/log.txt',
+        level: 50,
+        name: 'log',
+        serializers: {}
+      }
+    );
+
+    inst.info({foo: 'bar'});
+
+    expect(s.write)
+      .not
+      .toHaveBeenCalled();
+  });
+
   describe('creating an instance', () => {
     let inst;
 
@@ -98,13 +115,7 @@ describe('logger', () => {
         foo: 'bar'
       }, 'It\'s loggin time!');
 
-      const mostRecent = s
-        .write
-        .calls
-        .mostRecent()
-        .args[0];
-
-      expect(JSON.parse(mostRecent))
+      expect(mostRecentWrite())
         .toEqual({
           name: 'log',
           level: 30,
@@ -116,14 +127,20 @@ describe('logger', () => {
         });
     });
 
-    it('should log nothing for error', () => {
+    it('should log for error', () => {
       inst.error(
         { foo: 'bar'
       });
 
-      expect(s.write)
-        .not
-        .toHaveBeenCalled();
+      expect(mostRecentWrite())
+        .toEqual({
+          name: 'log',
+          level: 50,
+          pid: jasmine.any(Number),
+          v: 0,
+          foo: 'bar',
+          time: jasmine.any(String)
+        });
     });
 
     it('should utilize serializers', () => {

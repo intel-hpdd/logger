@@ -22,7 +22,6 @@
 // @flow
 
 import fs from 'fs';
-import * as fp from 'intel-fp';
 import * as obj from 'intel-obj';
 
 type confT = {
@@ -50,7 +49,6 @@ export default (config:confT) => {
 
   const base = {
     name: config.name,
-    level: config.level,
     pid: process.pid,
     v: 0
   };
@@ -66,20 +64,23 @@ const createLogger = (base, s, config) => ({
       ...r
     }, s, config);
   },
-  info: getLevelLogger(fp.eq(LEVELS.INFO, config.level), s, config.serializers, base),
-  error: getLevelLogger(fp.eq(LEVELS.ERROR, config.level), s, config.serializers, base),
+  info: getLevelLogger(config.level, LEVELS.INFO, s, config.serializers, base),
+  error: getLevelLogger(config.level, LEVELS.ERROR, s, config.serializers, base)
 });
 
-const getLevelLogger = (rightLevel:boolean, s, serializers, base) => {
-  return rightLevel ? parseRecord(s, serializers, base) : () => {};
+const getLevelLogger = (passedLevel, expectedLevel, s, serializers, base) => {
+  return (passedLevel <= expectedLevel) ?
+    parseRecord(s, serializers, expectedLevel, base) :
+    () => {};
 };
 
-const parseRecord = (s, serializers, base) => {
+const parseRecord = (s, serializers, level, base) => {
   return (r:Object, msg:string) => {
     r = {
       ...base,
       ...r,
       msg,
+      level,
       time: new Date().toISOString()
     };
 

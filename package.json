@@ -49,7 +49,6 @@
     "proxyquire": "1.7.10"
   },
   "dependencies": {
-    "intel-fp": "4.4.1",
     "intel-obj": "5.0.2"
   }
 }
