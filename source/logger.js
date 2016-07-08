@@ -40,6 +40,21 @@ export const LEVELS = {
   ERROR: 50
 };
 
+export const serializers = {
+  err (e:Error) {
+    if (!e || !e.stack)
+      return e;
+
+    return {
+      message: e.message,
+      name: e.name,
+      stack: e.stack,
+      signal: e.signal,
+      code: e.code
+    };
+  }
+};
+
 export default (config:confT) => {
   const s = fs.createWriteStream(
     config.path,

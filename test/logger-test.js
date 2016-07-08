@@ -12,7 +12,7 @@ import {
 
 
 describe('logger', () => {
-  let logger, fs, s, mostRecentWrite;
+  let logger, serializers, fs, s, mostRecentWrite;
 
   beforeEach(() => {
     s = {
@@ -36,14 +36,17 @@ describe('logger', () => {
         .returnValue(s)
     };
 
-    logger = proxyquire
+    const mod = proxyquire
       .noPreserveCache()
       .noCallThru()('../source/logger', {
         fs,
         os: {
           hostname: () => 'host'
         }
-      }).default;
+      });
+
+    logger = mod.default;
+    serializers = mod.serializers;
   });
 
   it('should be a funtion', () => {
@@ -88,7 +91,8 @@ describe('logger', () => {
               return {
                 id: sock.id
               };
-            }
+            },
+            err: serializers.err
           }
         }
       );
@@ -165,6 +169,27 @@ describe('logger', () => {
           hostname: 'host',
           sock: {
             id: 5
+          },
+          time: jasmine.any(String)
+        });
+    });
+
+    it('should serialize errors', () => {
+      inst.error({
+        err: new Error('boom')
+      });
+
+      expect(mostRecentWrite())
+        .toEqual({
+          name: 'log',
+          level: 50,
+          pid: jasmine.any(Number),
+          v: 0,
+          hostname: 'host',
+          err: {
+            message: 'boom',
+            name: 'Error',
+            stack: jasmine.any(String)
           },
           time: jasmine.any(String)
         });
