@@ -22,7 +22,9 @@
 // @flow
 
 import fs from 'fs';
+import os from 'os';
 import * as obj from 'intel-obj';
+
 
 type confT = {
   name: string,
@@ -50,6 +52,7 @@ export default (config:confT) => {
   const base = {
     name: config.name,
     pid: process.pid,
+    hostname: os.hostname(),
     v: 0
   };
 
@@ -93,7 +96,7 @@ const parseRecord = (s, serializers, level, base) => {
     s
       .write(
         JSON
-          .stringify(result)
+          .stringify(result) + '\n'
       );
   };
 };

@@ -39,7 +39,10 @@ describe('logger', () => {
     logger = proxyquire
       .noPreserveCache()
       .noCallThru()('../source/logger', {
-        fs
+        fs,
+        os: {
+          hostname: () => 'host'
+        }
       }).default;
   });
 
@@ -121,6 +124,7 @@ describe('logger', () => {
           level: 30,
           pid: jasmine.any(Number),
           v: 0,
+          hostname: 'host',
           foo: 'bar',
           msg: 'It\'s loggin time!',
           time: jasmine.any(String)
@@ -138,6 +142,7 @@ describe('logger', () => {
           level: 50,
           pid: jasmine.any(Number),
           v: 0,
+          hostname: 'host',
           foo: 'bar',
           time: jasmine.any(String)
         });
@@ -157,6 +162,7 @@ describe('logger', () => {
           level: 30,
           pid: jasmine.any(Number),
           v: 0,
+          hostname: 'host',
           sock: {
             id: 5
           },
@@ -175,6 +181,7 @@ describe('logger', () => {
           level: 30,
           pid: jasmine.any(Number),
           v: 0,
+          hostname: 'host',
           sock: 3,
           time: jasmine.any(String)
         });
@@ -195,6 +202,7 @@ describe('logger', () => {
           level: 30,
           pid: jasmine.any(Number),
           v: 0,
+          hostname: 'host',
           fromParent: true,
           bar: 'baz',
           time: jasmine.any(String)
