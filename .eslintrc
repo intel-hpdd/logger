@@ -1,0 +1,45 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "flow-vars",
+    "flowtype"
+  ],
+  "rules": {
+    "flow-vars/define-flow-type": 1,
+    "flow-vars/use-flow-type": 1,
+    "flowtype/space-after-type-colon": [
+        1,
+        "never"
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "indent": [
+      2,
+      2
+    ],
+    "curly": [
+      2,
+      "multi",
+      "consistent"
+    ]
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "extends": "eslint:recommended"
+}
