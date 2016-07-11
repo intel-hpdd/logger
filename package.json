@@ -1,6 +1,6 @@
 {
   "name": "intel-logger",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A logging utility. Compatible with bunyan-cli",
   "main": "dist/source/logger.js",
   "scripts": {
