@@ -1,11 +1,17 @@
 {
   "presets": [
-    "es2015"
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
   ],
   "plugins": [
-    "transform-flow-strip-types",
-    "transform-strict-mode",
-    "transform-object-rest-spread"
+    ["transform-object-rest-spread",
+      {
+        "useBuiltIns": true
+      }
+    ],
+    "transform-flow-strip-types"
   ],
-  "sourceMaps": "inline"
 }
