@@ -1,2 +1,5 @@
-const {describe, beforeEach, it, expect, jasmine} = global;
-export {describe, beforeEach, it, expect, jasmine};
+// @flow
+
+/*global describe beforeEach afterEach it expect jasmine jest:true*/
+
+export { describe, beforeEach, afterEach, it, expect, jasmine, jest };
