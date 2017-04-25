@@ -1,5 +1,5 @@
 {
-  "name": "@iml/logger",
+  "name": "@mfl/logger",
   "version": "1.0.0",
   "description": "A logging utility. Compatible with bunyan-cli",
   "main": "source/logger.js",
@@ -23,17 +23,17 @@
       "test"
     ],
     "transformIgnorePatterns": [
-      "/node_modules/(?!@iml)/"
+      "/node_modules/(?!@mfl)/"
     ]
   },
   "publishConfig": {
-    "registry": "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-local"
+    "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.intel.com:IML/logger.git"
+    "url": "git@github.intel.com:MFL/logger.git"
   },
-  "author": "IML Team",
+  "author": "MFL Team",
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "7.1.1",
@@ -47,8 +47,8 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-prettier": "2.0.1",
     "flow-bin": "0.40.0",
-    "intel-flow-jasmine": "1.6.0",
-    "intel-jasmine-n-matchers": "2.1.1",
+    "@mfl/flow-jasmine": "1.6.0",
+    "@mfl/jasmine-n-matchers": "2.1.1",
     "jasmine-reporters": "2.2.0",
     "pre-commit": "1.2.2",
     "prettier": "0.19.0"
