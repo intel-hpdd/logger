@@ -5,8 +5,6 @@
 .flowconfig
 .gitignore
 yarn.lock
-run_test.sh
-setup-jasmine-env.js
 *.log
 node_modules
 /test
