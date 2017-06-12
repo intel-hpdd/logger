@@ -81,9 +81,7 @@ describe('logger', () => {
     });
 
     it('should create a writeStream', () => {
-      expect(
-        mockFs.createWriteStream
-      ).toHaveBeenCalledOnceWith('foo/bar/log.txt', {
+      expect(mockFs.createWriteStream).toHaveBeenCalledWith('foo/bar/log.txt', {
         flags: 'a',
         encoding: 'utf8'
       });
