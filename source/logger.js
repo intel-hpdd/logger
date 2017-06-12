@@ -68,9 +68,9 @@ const createLogger = (base, s, config) => ({
 });
 
 const getLevelLogger = (passedLevel, expectedLevel, s, serializers, base) =>
-  (passedLevel <= expectedLevel
+  passedLevel <= expectedLevel
     ? parseRecord(s, serializers, expectedLevel, base)
-    : () => {});
+    : (...args: any[]) => {}; // eslint-disable-line no-unused-vars
 
 const parseRecord = (s, serializers, level, base) => (
   r: string | {},
