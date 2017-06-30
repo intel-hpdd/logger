@@ -1,5 +1,5 @@
 {
-  "name": "@mfl/logger",
+  "name": "@iml/logger",
   "version": "1.0.2",
   "description": "A logging utility. Compatible with bunyan-cli",
   "main": "source/logger.js",
@@ -21,7 +21,7 @@
       "test"
     ],
     "transformIgnorePatterns": [
-      "/node_modules/(?!@mfl)/"
+      "/node_modules/(?!@iml)/"
     ]
   },
   "publishConfig": {
@@ -31,10 +31,10 @@
     "type": "git",
     "url": "git@github.com:intel-hpdd/logger.git"
   },
-  "author": "MFL Team",
+  "author": "IML Team",
   "license": "MIT",
   "devDependencies": {
-    "@mfl/flow-jasmine": "1.6.1",
+    "@iml/flow-jasmine": "1.6.1",
     "babel-eslint": "7.2.3",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-flow-strip-types": "6.22.0",

@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@mfl/flow-jasmine@1.6.1":
+"@iml/flow-jasmine@1.6.1":
   version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@mfl/flow-jasmine/-/flow-jasmine-1.6.1.tgz#ddf955193823af50f2180fc613e81cf7fbde2043"
+  resolved "https://registry.yarnpkg.com/@iml/flow-jasmine/-/flow-jasmine-1.6.1.tgz#ddf955193823af50f2180fc613e81cf7fbde2043"
 
 abab@^1.0.3:
   version "1.0.3"
