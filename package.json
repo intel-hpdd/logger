@@ -35,7 +35,7 @@
   "license": "MIT",
   "devDependencies": {
     "@iml/flow-jasmine": "1.6.1",
-    "babel-eslint": "7.2.3",
+    "babel-eslint": "8.0.0",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-flow-strip-types": "6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
